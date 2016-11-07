@@ -75,176 +75,16 @@
       
         <h1 id="react"><a href="#react" class="headerlink" title="react"></a>react</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ol>
 <li>本质：如何将来自服务器端或者用户输入的动态数据高效的反映到复杂的用户界面上<br>用于开发数据不断变化的程序，实现前端界面的高效率高性能开发</li>
-<li>虚拟DOM，数据变化时重新构建DOM树，将当前DOM树和之前的进行对比，得到结构区别，将需要变化的部分进行更新<br>虚拟DOM是内存数据，性能高实际DOM操作仅仅是diff部分</li>
-</ol>
-<h2 id="reactdemo"><a href="#reactdemo" class="headerlink" title="reactdemo"></a>reactdemo</h2><h3 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h3><ol>
-<li>安装<br>cnpm i babel-core babel-loader babel-preset-es2015 babel-preset-react -D<br>cnpm i react react-dom -D</li>
-<li>检查package.json, scripts内自己设置的build 改为”start”:”node server.js”</li>
-<li>修改webpack.config.js, 将devServer注释掉</li>
-<li><p>新建server.js 与config同级，server引出来</p>
-<p> var webpack = require(‘webpack’);<br> var WebpackDevServer = require(‘webpack-dev-server’);<br> var config = require(‘./webpack.config.js’);<br> new WebpackDevServer(webpack(config),{<br>   contentBase: __dirname + ‘/prd’,<br>   inline: true,<br>   historyApiFallback: true,<br>   proxy: {</p>
-<pre><code>&apos;/rest/*&apos;: {
-  target: &apos;heet://localhost:8888&apos;,
-  secure: true,
-  pathRewrite: {
-    &apos;^/rest&apos;: &apos;&apos;
-  }
-}
-</code></pre><p>   }<br>   })<br>   .listen(80, ‘localhost’, function(err,result){</p>
-<pre><code>if(err){
-  console.log(err);
-  }else{
-    console.log(&apos;listen at localhost 80&apos;);
-  }
-</code></pre><p>   })</p>
-</li>
-<li><p>新建app.js</p>
-<p> ‘use strict’;<br> import React from ‘react’;<br> import ReactDOM from ‘react-dom’;<br> import Name from ‘./components/name.js’;<br> ReactDOM.render(<br>   <name>,  //组件<br>   document.getELementById(‘app’);  //注入到节点上<br>   )</name></p>
-</li>
-</ol>
-<p>6.新建name.js 在app.js中引入</p>
-<pre><code>&apos;use strict&apos;;
-import React from &apos;react&apos;;
-class Name extends React.Component {
-  render(){
-    return (
-      &lt;div&gt;hello&lt;/div&gt;
-      )
-    }
-  }
-  export default;
-  // export {Name as default};
-</code></pre><p>7.模块热替换<br>安装 cnpm i react-hot-loader -D<br>修改webpack.config.js</p>
-<pre><code>entry: [
-  &apos;webpack-dev-server/client?http://localhost&apos;,
-  &apos;webpack/hot/only-dev-server&apos;
-]
-plugins:[
-  new webpack.hotModuleReplacementPlugin()
-]
-</code></pre><p>修改server.js<br>hot:true<br>修改app.js</p>
-<pre><code>import CommentBox from &apos;./components/comment/cpmment-box.js&apos;;
-let Comments = [
-  {
-    author:&apos;aaa&apos;,
-    date: &apos;5分钟前&apos;,
-    content: &apos;天气很好&apos;
-  },
-  {
-    author:&apos;bbb&apos;,
-    date: &apos;7分钟前&apos;,
-    content: &apos;天气不好&apos;
-  }
-]
-ReactDOM.render(
-  &lt;CommentBox /&gt;,
-  document.getElementById(&apos;app&apos;)
-);
-if(module.hot){
-  module.hot.accept();
-}
-</code></pre><p>新建 components/comment/comment-box.js   在app.js中引入CommentBox</p>
-<pre><code>&apos;use strict&apos;;
-import React from &apos;react&apos;;
-import CommentList from &apos;./comment-list.js&apos;;
-import CommentForm from &apos;./comment-form.js&apos;;
-class CommentBox extends React.Component {
-  render(){
-    return(
-      &lt;div className = &quot;m-index&quot;&gt;
-        &lt;div&gt;
-          &lt;h1&gt;评论&lt;/h1&gt;
-        &lt;/div&gt;
-        &lt;CommentList data=&quot;&quot; /&gt;
-        &lt;CommentForm /&gt;
-      &lt;/div&gt;
-    )
-  }
-}
-export {CommentBox as default};
-</code></pre><p>新建comment-list.js  在comment-box.js中引入</p>
-<pre><code>&apos;use strict&apos;;
-import React from &apos;react&apos;;
-import CommentItem from &apos;./comment-item.js&apos;;
-class CommentList extends React.Component {
-  render(){
-    let CommentNodes = this.props.data.map(comment,index =&gt; {
-      // console.log(comment);
-      return{
-        &lt;CommentItem key={index} author={comment.author} date={comment.date}&gt;
-          {comment.content}
-        &lt;/CommentItem&gt;
-      }
-    })
-    return(
-      &lt;div&gt;
-        { CommentNodes }
-      &lt;/div&gt;
-    )
-  }
-}
-export {CommentList as default};
-</code></pre><p>新建comment-item.js  在comment-list.js中引入</p>
-<pre><code>&apos;use strict&apos;;
-import React from &apos;react&apos;;
-class CommentItem extends React.Component {
-  render(){
-    return(
-      &lt;div className=&quot;comment&quot;&gt;
-        &lt;span&gt;{ this.props.author }&lt;/span&gt;   //props 组件之间信息传递
-        &lt;span&gt;{ this.props.date }&lt;/span&gt;
-        &lt;div&gt;{ this.props.children }&lt;/div&gt;
-      &lt;/div&gt;
-    )
-  }
-}
-export {CommentItem as default};
-</code></pre><p>新建comment-form.js   在comment-box.js中引入</p>
-<pre><code>&apos;use strict&apos;;
-import React from &apos;react&apos;;
-class CommentForm extends React.Component {
-  render(){
-    return(
-      &lt;div className=&quot;yo-list&quot;&gt;
-        &lt;label className=&quot;item item-input&quot;&gt;
-          &lt;input type=&quot;text&quot; className=&quot;yo-input flex&quot; placeholder=&quot;发布人&quot; /&gt;
-        &lt;/label&gt;
-        &lt;label className=&quot;item item-input&quot;&gt;
-          &lt;textareea className=&quot;yo-input flex&quot; placeholder=&quot;留言内容&quot;&gt;&lt;/textarea&gt;
-        &lt;/label&gt;
-        &lt;label className=&quot;item item-input&quot;&gt;
-          &lt;button className=&quot;yo-btn yo-btn-l&quot;&gt;发表评论&lt;/button&gt;
-        &lt;/label&gt;
-      &lt;/div&gt;
-    )
-  }
-}
-export {CommentForm as default};
-</code></pre><p>8.json数据抽离<br>/prd/comment.json<br>app.js 中</p>
-<pre><code>ReactDOM.render(
-  &lt;CommentBox url=&quot;&quot; /&gt;
-)
-</code></pre><p>修改comment-box.js</p>
-<pre><code>constructor(props){
-  super(props)
-  console.log(this.props.url);
-  //定义当前组件的状态
-  this.state = {data:[]};
-  fetch(this.props.url).then(response =&gt; response.json()).then(data =&gt;{
-    // console.log(data);
-    this.setState({data:data});
-  }).catch(e =&gt;{
-    console.log(&quot;Oops, error&quot;);
-  })
-}
-render(
-  &lt;CommentList data = {this.state.data}&gt;
-)
-</code></pre>
+<li>虚拟DOM，数据变化时重新构建DOM树，将当前DOM树和之前的进行对比，得到结构区别，将需要变化的部分进行更新<br>虚拟DOM是内存数据，性能高实际DOM操作仅仅是diff部分
+        
+          <p class="article-more-link">
+            <a href="/2016/11/07/react/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/11/07/react/" data-id="civ800gpd0001n0nfbx1ze4mb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/11/07/react/" data-id="civ805w350002dwnfkn8v03ml" class="article-share-link">Share</a>
       
       
     </footer>
@@ -270,7 +110,7 @@ render(
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/11/03/new/" data-id="civ800gn70000n0nf7rtjz99x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/11/03/new/" data-id="civ805w230000dwnfipiu1u1j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -315,7 +155,7 @@ render(
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/10/31/hello-world/" data-id="civ800gqe0002n0nf8ck3zd31" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/10/31/hello-world/" data-id="civ805w2z0001dwnf37rby889" class="article-share-link">Share</a>
       
       
     </footer>

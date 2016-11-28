@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="Yo 是一个专注于移动开发的 Front-end UI Framework，她轻量，易用，并且具备超强的可配置和扩展能力。">
+<meta name="description" content="一直有听说Yo框架，Qnar前端总监杜瑶大神的作品，前段时间看了一些，感觉还不错，很轻量，推荐学习~Yo框架 是一个专注于移动开发的 Front-end UI Framework，特点轻量，易用，并且具备超强的可配置和扩展能力。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="doyoe/Yo">
+<meta property="og:title" content="doyoe/Yo框架">
 <meta property="og:url" content="http://yoursite.com/2016/05/10/YO框架核心/index.html">
 <meta property="og:site_name" content="温柔的过往">
-<meta property="og:description" content="Yo 是一个专注于移动开发的 Front-end UI Framework，她轻量，易用，并且具备超强的可配置和扩展能力。">
-<meta property="og:updated_time" content="2016-11-28T13:18:17.591Z">
+<meta property="og:description" content="一直有听说Yo框架，Qnar前端总监杜瑶大神的作品，前段时间看了一些，感觉还不错，很轻量，推荐学习~Yo框架 是一个专注于移动开发的 Front-end UI Framework，特点轻量，易用，并且具备超强的可配置和扩展能力。">
+<meta property="og:updated_time" content="2016-11-28T14:45:47.797Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="doyoe/Yo">
-<meta name="twitter:description" content="Yo 是一个专注于移动开发的 Front-end UI Framework，她轻量，易用，并且具备超强的可配置和扩展能力。">
+<meta name="twitter:title" content="doyoe/Yo框架">
+<meta name="twitter:description" content="一直有听说Yo框架，Qnar前端总监杜瑶大神的作品，前段时间看了一些，感觉还不错，很轻量，推荐学习~Yo框架 是一个专注于移动开发的 Front-end UI Framework，特点轻量，易用，并且具备超强的可配置和扩展能力。">
 
 
 
@@ -127,7 +127,7 @@
 
 
 
-  <title> doyoe/Yo | 温柔的过往 </title>
+  <title> doyoe/Yo框架 | 温柔的过往 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -282,7 +282,7 @@
             
             
               
-                doyoe/Yo
+                doyoe/Yo框架
               
             
           </h1>
@@ -356,9 +356,9 @@
       
 
       
-        <p>Yo 是一个专注于移动开发的 Front-end UI Framework，她轻量，易用，并且具备超强的可配置和扩展能力。<br><a id="more"></a></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">lib是核心代码</div><div class="line">lib-&gt;core-&gt;classes 定义了很多方法 </div><div class="line">暂时关闭css js压缩 wathch 改成page<span class="comment">/**/</span>*</div><div class="line">libs放第三方库</div><div class="line">如何引入.string </div><div class="line"><span class="number">1.</span> npm i string-loader -D</div><div class="line"><span class="number">2.</span> 配置gulp 添加loaders</div><div class="line">&#123;</div><div class="line">	<span class="attr">test</span>:<span class="regexp">/\.string$/</span>,</div><div class="line">	<span class="attr">loader</span>:<span class="string">'string'</span>,</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">&#125;</div><div class="line">script-&gt;新建tpls cd tpls 新建index.string</div><div class="line">scripts-&gt;新建utils -&gt;commom.util.js </div><div class="line"><span class="keyword">var</span> common=&#123;</div><div class="line">	<span class="attr">render</span>:<span class="function"><span class="keyword">function</span>(<span class="params">str</span>)</span>&#123;</div><div class="line">		$(<span class="string">'body'</span>).prepend(<span class="string">'str'</span>)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">artTemplate模板</div><div class="line"><span class="keyword">var</span> templaete=<span class="built_in">require</span>(<span class="string">""</span>)</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">引入zepto.js 官网zeptojs.com</div><div class="line">-&gt;放到libs</div><div class="line">在scripts新建文件夹views 新建index.js</div><div class="line">直接在index引用</div><div class="line">在gulp配置exclude</div><div class="line"></div><div class="line">@include flexbox()</div><div class="line">@include flex(<span class="number">1</span>)</div><div class="line">@include flex-direction(column)</div></pre></td></tr></table></figure>
-<p>zepto其他模块打包<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">zepto打包</div><div class="line">	github搜索</div><div class="line">	-&gt;make <span class="number">41</span>行 加模块</div><div class="line">	npm i </div><div class="line">	npm run-script dist</div></pre></td></tr></table></figure></p>
+        <p>一直有听说Yo框架，Qnar前端总监杜瑶大神的作品，前段时间看了一些，感觉还不错，很轻量，推荐学习~<br>Yo框架 是一个专注于移动开发的 Front-end UI Framework，特点轻量，易用，并且具备超强的可配置和扩展能力。<br><a id="more"></a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">lib是核心代码</div><div class="line">lib-&gt;core-&gt;classes 定义了很多方法</div><div class="line">暂时关闭css js压缩 wathch 改成page<span class="comment">/**/</span>*</div><div class="line">libs放第三方库</div><div class="line">如何引入.string</div><div class="line"><span class="number">1.</span> npm i string-loader -D</div><div class="line"><span class="number">2.</span> 配置gulp 添加loaders</div><div class="line">&#123;</div><div class="line">	<span class="attr">test</span>:<span class="regexp">/\.string$/</span>,</div><div class="line">	<span class="attr">loader</span>:<span class="string">'string'</span>,</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">&#125;</div><div class="line">script-&gt;新建tpls cd tpls 新建index.string</div><div class="line">scripts-&gt;新建utils -&gt;commom.util.js</div><div class="line"><span class="keyword">var</span> common=&#123;</div><div class="line">	<span class="attr">render</span>:<span class="function"><span class="keyword">function</span>(<span class="params">str</span>)</span>&#123;</div><div class="line">		$(<span class="string">'body'</span>).prepend(<span class="string">'str'</span>)</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">artTemplate模板</div><div class="line"><span class="keyword">var</span> templaete=<span class="built_in">require</span>(<span class="string">""</span>)</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">引入zepto.js 官网zeptojs.com</div><div class="line">-&gt;放到libs</div><div class="line">在scripts新建文件夹views 新建index.js</div><div class="line">直接在index引用</div><div class="line">在gulp配置exclude</div><div class="line"></div><div class="line">@include flexbox()</div><div class="line">@include flex(<span class="number">1</span>)</div><div class="line">@include flex-direction(column)</div></pre></td></tr></table></figure>
+<p>zepto其他模块打包<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">zepto打包</div><div class="line">	github搜索</div><div class="line">	-&gt;make <span class="number">41</span>行 加模块</div><div class="line">	npm i</div><div class="line">	npm run-script dist</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -421,7 +421,7 @@
     <div class="post-spread">
       
         <div class="ds-share flat" data-thread-key="2016/05/10/YO框架核心/"
-     data-title="doyoe/Yo"
+     data-title="doyoe/Yo框架"
      data-content=""
      data-url="http://yoursite.com/2016/05/10/YO框架核心/">
   <div class="ds-share-inline">
@@ -451,7 +451,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/05/10/YO框架核心/"
-           data-title="doyoe/Yo" data-url="http://yoursite.com/2016/05/10/YO框架核心/">
+           data-title="doyoe/Yo框架" data-url="http://yoursite.com/2016/05/10/YO框架核心/">
       </div>
     
   </div>
@@ -487,7 +487,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -495,7 +495,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -504,7 +504,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">37</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
